@@ -1,0 +1,5 @@
+Validation metrics
+Relative L2 error for P: 0.94999588
+Relative L2 error for T: 0.00892402
+RMSE at sensor locations vs noiseless T: 0.48180071 C
+RMSE at held-out grid points: 0.49280390 C

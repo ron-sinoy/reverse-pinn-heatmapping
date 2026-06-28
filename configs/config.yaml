@@ -1,0 +1,72 @@
+domain:
+  size_mm: 20.0
+  grid_size: 100
+
+physics:
+  thermal_conductivity_w_mk: 150.0
+  ambient_temperature_c: 25.0
+  convection_coefficient_w_m2k: 200.0
+
+floorplan:
+  cores:
+    - name: core_1
+      rows: [12, 23]
+      cols: [12, 23]
+      power_w_m2: 16000000.0
+    - name: core_2
+      rows: [12, 23]
+      cols: [27, 38]
+      power_w_m2: 16000000.0
+    - name: core_3
+      rows: [27, 38]
+      cols: [12, 23]
+      power_w_m2: 21000000.0
+    - name: core_4
+      rows: [27, 38]
+      cols: [27, 38]
+      power_w_m2: 16000000.0
+  cache:
+    name: cache
+    rows: [18, 42]
+    cols: [48, 74]
+    power_w_m2: 5500000.0
+
+sensors:
+  count: 15
+  noise_sigma_c: 1.5
+  seed: 42
+
+training:
+  seed: 7
+
+forward_pinn:
+  hidden_layers: 5
+  hidden_units: 96
+  activation: tanh
+  epochs: 500
+  learning_rate: 0.001
+  interior_points: 2048
+  boundary_points_per_edge: 256
+  eval_grid_size: 100
+  pde_weight: 20.0
+  boundary_weight: 1.0
+  data_weight: 1.0
+
+inverse_pinn:
+  t_hidden_layers: 5
+  t_hidden_units: 96
+  p_hidden_layers: 4
+  p_hidden_units: 64
+  activation: tanh
+  epochs: 1000
+  learning_rate: 0.001
+  interior_points: 1024
+  boundary_points: 256
+  eval_grid_size: 100
+  pde_weight: 1.0
+  boundary_weight: 1.0
+  data_weight: 100.0
+  p_smoothness_weight: 0.0001
+  power_scale_w_m2: 21000000.0
+  use_wandb: false
+  wandb_mode: offline

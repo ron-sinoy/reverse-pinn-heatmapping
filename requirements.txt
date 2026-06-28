@@ -1,0 +1,7 @@
+deepxde
+matplotlib
+numpy
+pyyaml
+scipy
+torch
+wandb
